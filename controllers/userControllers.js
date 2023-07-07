@@ -21,7 +21,7 @@ exports.registerUser = async (req, res) => {
             secure: true
         }
 
-        res.cookie('mytoken', token, options).status(201).json({ success: true, message: "User Created", user })
+        res.cookie('myToken', token, options).status(201).json({ success: true, message: "User Created", user })
 
     } catch (error) {
         res.status(500).json({ success: false, message: error.message })
@@ -45,7 +45,6 @@ exports.loginUser = async (req, res) => {
         }
 
         const isPasswordMatched = await bcrypt.compare(password, user.password)
-        console.log(isPasswordMatched)
 
         if (!isPasswordMatched) {
             return res.status(400).json({ success: false, message: "Invalid Email or Password" })
@@ -60,10 +59,35 @@ exports.loginUser = async (req, res) => {
             secure: true
         }
 
-        res.cookie('mytoken', token, options).status(200).json({ success: true, message: "Logged in Successfully", user })
+        res.cookie('myToken', token, options).status(200).json({ success: true, message: "Logged in Successfully", user })
 
 
     } catch (error) {
         res.status(500).json({ success: false, message: error.message })
     }
+}
+
+
+// 3. Logged In User data
+exports.userDetails = (req, res) => {
+    res.status(200).json({ success: true, user: req.user })
+}
+
+// 4. Logout User
+exports.logoutUser = (req, res) => {
+
+    try {
+        const options = {
+            expires: new Date(Date.now()),
+            httpOnly: true,
+            sameSite: false,
+            secure: true
+        }
+
+        res.cookie('myToken', null, options).status(200).json({ success: true, message: "Logout Successfully" })
+
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message })
+    }
+
 }
