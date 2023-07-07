@@ -3,11 +3,16 @@ const app = express()
 const cors = require('cors')
 const dotenv = require('dotenv').config()
 
+app.use(express.json())
 app.use(cors())
 
 // ConnectDb
 const connectDb = require('./connection/connect')
 connectDb()
+
+// Routes
+const routes = require('./routes/router')
+app.use("/api", routes)
 
 const port = process.env.PORT || 6000
 
