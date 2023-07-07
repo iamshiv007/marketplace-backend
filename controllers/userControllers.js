@@ -16,8 +16,8 @@ exports.registerUser = async (req, res) => {
 
         const options = {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-            httpOnly: true,
-            // sameSite: false,
+            // httpOnly: true,
+            sameSite: false,
             // secure: false
         }
 
@@ -54,8 +54,8 @@ exports.loginUser = async (req, res) => {
 
         const options = {
             expires: new Date(Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000),
-            httpOnly: true,
-            // sameSite: false,
+            // httpOnly: true,
+            sameSite: false,
             // secure: false
         }
 
@@ -79,8 +79,8 @@ exports.logoutUser = (req, res) => {
     try {
         const options = {
             expires: new Date(Date.now()),
-            httpOnly: true,
-            // sameSite: false,
+            // httpOnly: true,
+            sameSite: false,
             // secure: false
         }
 
