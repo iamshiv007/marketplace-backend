@@ -1,0 +1,39 @@
+###
+Register
+Post  https://marketplace-backend-one.vercel.app/api/user/register
+Payload:
+{
+    "userName":"Shiv",
+    "email":"shiv@demo.com",
+    "password":"Shiv@123",
+    "birthDate":"20-03-2003"
+}
+
+###
+Login
+Post https://marketplace-backend-one.vercel.app/api/user/login
+payload:
+{
+    "email":"shiv@demo.com",
+    "password":"Shiv@123"
+}
+
+###
+Get Complain By Id
+Get https://hrms-backend-iamshiv007.vercel.app/api/complain/:id
+
+###
+Update Complain
+Put https://hrms-backend-iamshiv007.vercel.app/api/complain/:id
+
+###
+Delete Complain
+Delete https://hrms-backend-iamshiv007.vercel.app/api/complain/:id
+
+###
+New Leave
+Post https://hrms-backend-iamshiv007.vercel.app/api/leave/new
+
+###
+Get All Leaves
+Get https://hrms-backend-iamshiv007.vercel.app/api/leaves
