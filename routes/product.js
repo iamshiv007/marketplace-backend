@@ -1,4 +1,4 @@
-const { newProduct } = require("../controllers/ProductControllers")
+const { newProduct, getAllProducts, updateProduct } = require("../controllers/ProductControllers")
 const { isAuthenticatedUser } = require("../middleware/auth")
 
 const multer = require('multer')
@@ -19,5 +19,7 @@ const upload = multer({ storage })
 const router = require("express").Router()
 
 router.post('/product/new', upload.array("images"), isAuthenticatedUser, newProduct)
+router.get('/product/all', getAllProducts)
+router.put('/product/:id', upload.array("images"), updateProduct)
 
 module.exports = router
